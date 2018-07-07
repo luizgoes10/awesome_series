@@ -2,6 +2,7 @@ package awesomeseries.com.br.awesomeseries
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import awesomeseries.com.br.awesomeseries.R
 
 class MainActivity : AppCompatActivity() {
 
