@@ -9,10 +9,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import awesomeseries.com.br.awesomeseries.R
+import awesomeseries.com.br.awesomeseries.presenters.MainViewPresenter
 import kotlinx.android.synthetic.main.activity_main_view.*
 import kotlinx.android.synthetic.main.app_bar_main_view.*
 
-class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainViewPresenter.ViewCallBack {
+
+    private val presenter: MainViewPresenter by lazy{ MainViewPresenter(this)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,9 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         nav_view.setNavigationItemSelectedListener(this)
     }
 
+    override fun showHideProgress(show: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
