@@ -8,13 +8,6 @@
     tools:context=".activitys.MainViewActivity"
     tools:showIn="@layout/app_bar_main_view">
 
-    <include layout="@layout/fragment_popular_series"/>
 
-    <ProgressBar
-        android:id="@+id/progressSeriesService"
-        android:indeterminateTint="@color/colorStatusBar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_gravity="center"
-        android:visibility="invisible"/>
+
 </FrameLayout>
