@@ -10,10 +10,10 @@ open class ResponseVO : Serializable {
     var message = "Houve um erro, tente mais tarde"
 
     @SerializedName("listSeries")
-    lateinit var seriesList: List<PopularSeries>
+    lateinit var seriesList: List<PopularSeriesResult>
 
 
-    var popularSeriesList:MutableList<PopularSeries> = mutableListOf()
+    var popularSeriesList:MutableList<PopularSeriesResult> = mutableListOf()
 
 
     fun isSucessFul():Boolean{

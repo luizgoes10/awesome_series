@@ -5,6 +5,7 @@ import awesomeseries.com.br.awesomeseries.Utils.checkForErros
 import awesomeseries.com.br.awesomeseries.Utils.createRetrofitService
 import awesomeseries.com.br.awesomeseries.models.BaseUrl
 import awesomeseries.com.br.awesomeseries.models.PopularSeries
+import awesomeseries.com.br.awesomeseries.models.PopularSeriesResult
 import awesomeseries.com.br.awesomeseries.models.ResponseVO
 import retrofit2.Call
 import retrofit2.http.GET
@@ -20,7 +21,7 @@ class SeriesService {
     companion object Factory {
 
         @Throws
-        fun getPopularSeries():MutableList<PopularSeries>{
+        fun getPopularSeries():MutableList<PopularSeriesResult>{
 
 
             val service = createRetrofitService<Retrofit>(BaseUrl.URL_ADDRESS)

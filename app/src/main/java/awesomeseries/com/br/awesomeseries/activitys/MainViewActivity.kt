@@ -1,17 +1,22 @@
 package awesomeseries.com.br.awesomeseries.activitys
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import awesomeseries.com.br.awesomeseries.R
 import awesomeseries.com.br.awesomeseries.presenters.MainViewPresenter
 import kotlinx.android.synthetic.main.activity_main_view.*
 import kotlinx.android.synthetic.main.app_bar_main_view.*
+import kotlinx.android.synthetic.main.content_main_view.*
 
 class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainViewPresenter.ViewCallBack {
 
@@ -33,10 +38,19 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+        presenter.onViewCreated()
     }
 
-    override fun showHideProgress(show: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setUpRecycler() {
+      //  mRecyclerPopularSeries.layoutManager = LinearLayoutManager(this)
+    //    mRecyclerPopularSeries.itemAnimator = DefaultItemAnimator()
+    }
+    override fun showSwipeProgress(show: Boolean) {
+       // swipeReflesh.visibility = View.GONE
+    }
+
+    override fun showProgress() {
+        progressSeriesService.visibility = View.VISIBLE
     }
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
