@@ -1,16 +1,15 @@
-package awesomeseries.com.br.awesomeseries.models.Services
+package awesomeseries.com.br.awesomeseries.api.Services
 
-import awesomeseries.com.br.awesomeseries.Utils.Exceptions.SeriesException
-import awesomeseries.com.br.awesomeseries.Utils.checkForErros
-import awesomeseries.com.br.awesomeseries.Utils.createRetrofitService
-import awesomeseries.com.br.awesomeseries.models.BaseUrl
-import awesomeseries.com.br.awesomeseries.models.PopularSeries
+import awesomeseries.com.br.awesomeseries.api.Utils.Exceptions.SeriesException
+import awesomeseries.com.br.awesomeseries.api.Utils.checkForErros
+import awesomeseries.com.br.awesomeseries.api.Utils.createRetrofitService
+import awesomeseries.com.br.awesomeseries.api.BaseUrl
 import awesomeseries.com.br.awesomeseries.models.PopularSeriesResult
-import awesomeseries.com.br.awesomeseries.models.ResponseVO
+import awesomeseries.com.br.awesomeseries.api.ResponseVO
 import retrofit2.Call
 import retrofit2.http.GET
 
-class SeriesService {
+class SeriesServiceApi {
     interface Retrofit{
 
         @GET("/top_rated?page=1&language=pt-BR&api_key=7e8b94028880068513979678abef3a0a")

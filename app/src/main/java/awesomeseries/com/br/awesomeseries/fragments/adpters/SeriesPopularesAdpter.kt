@@ -1,5 +1,6 @@
 package awesomeseries.com.br.awesomeseries.fragments.adpters
 
+import android.content.Context
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,16 +10,15 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import awesomeseries.com.br.awesomeseries.R
-import awesomeseries.com.br.awesomeseries.models.BaseUrl
 import awesomeseries.com.br.awesomeseries.models.PopularSeries
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.seriespopulares_adpter.tName
 
 //Define o construtor que recebe (lista, e o evento click)
 class SeriesPopularesAdpter(
-
-        val series:List<PopularSeries>,
+        val context: Context,
+        var series:List<PopularSeries>,
         val onClick:(PopularSeries)->Unit) :RecyclerView.Adapter<SeriesPopularesAdpter.SeriesPopularesViewHolder>(){
+
     //View holde com as views
     class SeriesPopularesViewHolder(view: View): RecyclerView.ViewHolder(view){
         var tNome: TextView
@@ -36,8 +36,12 @@ class SeriesPopularesAdpter(
             tAvaliacao = view.findViewById<TextView>(R.id.tVoteAverage)
             tSinopse = view.findViewById<TextView>(R.id.tOverView)
         }
+
     }
 
+    fun setList(listSeries: MutableList<PopularSeries>){
+        series = listSeries
+    }
     //quantia de items da lista
     override fun getItemCount() = series.size
 

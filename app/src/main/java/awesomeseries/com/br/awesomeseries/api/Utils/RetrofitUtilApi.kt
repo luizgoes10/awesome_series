@@ -1,4 +1,4 @@
-package awesomeseries.com.br.awesomeseries.Utils
+package awesomeseries.com.br.awesomeseries.api.Utils
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

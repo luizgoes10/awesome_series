@@ -1,6 +1,6 @@
-package awesomeseries.com.br.awesomeseries.Utils
+package awesomeseries.com.br.awesomeseries.api.Utils
 
-import awesomeseries.com.br.awesomeseries.models.ResponseVO
+import awesomeseries.com.br.awesomeseries.api.ResponseVO
 
 @Throws
 inline fun <reified T : Exception> checkForErros(responseVO: ResponseVO) {

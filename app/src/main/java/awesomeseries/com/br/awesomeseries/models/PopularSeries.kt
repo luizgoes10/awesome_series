@@ -1,6 +1,6 @@
 package awesomeseries.com.br.awesomeseries.models
 
-import java.time.format.DateTimeFormatter
+import awesomeseries.com.br.awesomeseries.api.BaseUrl
 import java.util.*
 
 class PopularSeries {

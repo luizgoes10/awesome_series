@@ -1,4 +1,4 @@
-package awesomeseries.com.br.awesomeseries.models
+package awesomeseries.com.br.awesomeseries.api
 
 class BaseUrl {
 

@@ -13,14 +13,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import awesomeseries.com.br.awesomeseries.R
+import awesomeseries.com.br.awesomeseries.fragments.SeriesPopulares
+import awesomeseries.com.br.awesomeseries.fragments.adpters.SeriesPopularesAdpter
+import awesomeseries.com.br.awesomeseries.models.PopularSeries
 import awesomeseries.com.br.awesomeseries.presenters.MainViewPresenter
 import kotlinx.android.synthetic.main.activity_main_view.*
 import kotlinx.android.synthetic.main.app_bar_main_view.*
 import kotlinx.android.synthetic.main.content_main_view.*
+import kotlinx.android.synthetic.main.fragment_series_populares.*
+import kotlinx.android.synthetic.main.seriespopulares_adpter.*
 
 class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainViewPresenter.ViewCallBack {
 
     private val presenter: MainViewPresenter by lazy{ MainViewPresenter(this)}
+    private var adpater:SeriesPopularesAdpter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,16 +47,39 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         presenter.onViewCreated()
     }
 
+
     override fun setUpRecycler() {
-      //  mRecyclerPopularSeries.layoutManager = LinearLayoutManager(this)
-    //    mRecyclerPopularSeries.itemAnimator = DefaultItemAnimator()
+          rvSeriesPopulars.layoutManager = LinearLayoutManager(this)
+          rvSeriesPopulars.itemAnimator = DefaultItemAnimator()
     }
-    override fun showSwipeProgress(show: Boolean) {
-       // swipeReflesh.visibility = View.GONE
+    override fun hideSwipeProgress(show: Boolean) {
+        swipeRefresh.isRefreshing = show
     }
 
     override fun showProgress() {
-        progressSeriesService.visibility = View.VISIBLE
+        pbProgress.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        pbProgress.visibility = View.GONE
+    }
+    override fun setPopularSeries(series: MutableList<PopularSeries>) {
+        rvSeriesPopulars.visibility = View.VISIBLE
+        if(adpater == null){
+
+            adpater = SeriesPopularesAdpter(this, series, onClickItem())
+
+            rvSeriesPopulars.adapter = adpater
+        }
+        else{
+            adpater?.setList(series)
+            adpater?.notifyDataSetChanged()
+        }
+
+    }
+
+    override fun hideRecycle() {
+        rvSeriesPopulars.visibility = View.GONE
     }
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -101,5 +130,9 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun onClickItem(): (PopularSeries) -> Unit = {series ->
+        presenter.clickedItem(series)
     }
 }

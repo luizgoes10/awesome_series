@@ -8,6 +8,6 @@
     tools:context=".activitys.MainViewActivity"
     tools:showIn="@layout/app_bar_main_view">
 
-
+<include layout="@layout/fragment_series_populares" />
 
 </FrameLayout>

@@ -1,5 +1,6 @@
-package awesomeseries.com.br.awesomeseries.models
+package awesomeseries.com.br.awesomeseries.api
 
+import awesomeseries.com.br.awesomeseries.models.PopularSeriesResult
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
