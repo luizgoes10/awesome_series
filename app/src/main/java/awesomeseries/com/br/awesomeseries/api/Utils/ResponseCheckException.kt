@@ -1,11 +1,13 @@
 package awesomeseries.com.br.awesomeseries.api.Utils
 
 import awesomeseries.com.br.awesomeseries.api.ResponseVO
+import awesomeseries.com.br.awesomeseries.models.PopularSeries
+import awesomeseries.com.br.awesomeseries.models.PopularSeriesResult
 
 @Throws
-inline fun <reified T : Exception> checkForErros(responseVO: ResponseVO) {
-    if (!responseVO.isSucessFul()) {
-        var message = responseVO.message
+inline fun <reified T : Exception> checkForErros(popularSeries: PopularSeriesResult) {
+    if (popularSeries.results.isEmpty()) {
+        var message = "houve um erro"
         if (message == "") {
             message = "Houve um erro na validação"
         }

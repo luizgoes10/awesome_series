@@ -57,11 +57,11 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
     override fun showProgress() {
-        pbProgress.visibility = View.VISIBLE
+        pbProgressBar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        pbProgress.visibility = View.GONE
+        pbProgressBar.visibility = View.GONE
     }
     override fun setPopularSeries(series: MutableList<PopularSeries>) {
         rvSeriesPopulars.visibility = View.VISIBLE

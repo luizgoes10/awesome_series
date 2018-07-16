@@ -12,15 +12,15 @@ import retrofit2.http.GET
 class SeriesServiceApi {
     interface Retrofit{
 
-        @GET("/top_rated?page=1&language=pt-BR&api_key=7e8b94028880068513979678abef3a0a")
-        fun getPopularSeries(): Call<ResponseVO>
+        @GET("top_rated?page=1&language=pt-BR&api_key=7e8b94028880068513979678abef3a0a")
+        fun getPopularSeries(): Call<PopularSeriesResult>
 
     }
 
     companion object Factory {
 
         @Throws
-        fun getPopularSeries():MutableList<PopularSeriesResult>{
+        fun getPopularSeries():PopularSeriesResult{
 
 
             val service = createRetrofitService<Retrofit>(BaseUrl.URL_ADDRESS)
@@ -29,7 +29,7 @@ class SeriesServiceApi {
             responseVO?.let {
 
                 checkForErros<SeriesException>(it)
-                return it.popularSeriesList
+                return it
             }
 
             throw SeriesException("Houve um erro")

@@ -24,4 +24,13 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <ProgressBar
+        android:id="@+id/pbProgressBar"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:indeterminateTint="@color/colorStatusBar"
+        android:visibility="invisible"/>
+
 </FrameLayout>

@@ -3,6 +3,7 @@ package awesomeseries.com.br.awesomeseries.presenters
 import android.os.Bundle
 import awesomeseries.com.br.awesomeseries.api.Services.SeriesServiceApi
 import awesomeseries.com.br.awesomeseries.models.PopularSeries
+import awesomeseries.com.br.awesomeseries.models.PopularSeriesResult
 import java.util.*
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -41,14 +42,15 @@ open class MainViewPresenter(val viewCallBack:ViewCallBack) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy (onNext = {
 
-                    if(it.isEmpty()){
+                    if(it.results.isEmpty()){
                         return@subscribeBy
                     }
                     if(reflesh){
                         viewCallBack.hideSwipeProgress(reflesh)
                     }
                     viewCallBack.hideProgress()
-                    viewCallBack.setPopularSeries(it[0].results)
+                    viewCallBack.setPopularSeries(it.results)
+
                 },
                         onError = {
                             viewCallBack.hideProgress()
