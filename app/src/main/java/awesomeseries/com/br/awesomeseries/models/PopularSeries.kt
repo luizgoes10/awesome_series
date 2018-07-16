@@ -23,8 +23,8 @@ class PopularSeries {
     var namePage = ""
     var titlePage = ""
 
-    var thumb = BaseUrl.API_BASE_IMAGE + "w200" + poster_path
-    var screenshotMed = BaseUrl.API_BASE_IMAGE + "w300" + poster_path
-    var logMed = BaseUrl.API_BASE_IMAGE + "original" + poster_path
-    var screenshotBig = BaseUrl.API_BASE_IMAGE + "w500" + poster_path
+    var thumb = BaseUrl.API_BASE_IMAGE + "w200"
+    var screenshotMed = BaseUrl.API_BASE_IMAGE + "w300"
+    var logMed = BaseUrl.API_BASE_IMAGE + "original"
+    var screenshotBig = BaseUrl.API_BASE_IMAGE + "w500"
 }

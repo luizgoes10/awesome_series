@@ -14,27 +14,29 @@ open class MainViewPresenter(val viewCallBack:ViewCallBack) {
 
     interface ViewCallBack{
 
-        fun hideSwipeProgress(show: Boolean)
         fun setUpRecycler()
         fun setPopularSeries(series: MutableList<PopularSeries>)
         fun hideRecycle()
         fun showProgress()
         fun hideProgress()
+        fun onSwipeLoadItems()
+        fun onSwipeCompleteLoadItems()
     }
 
     open fun onViewCreated(){
 
         viewCallBack.setUpRecycler()
         viewCallBack.showProgress()
-        getPopularSeries(true)
+        getPopularSeries()
     }
 
-    private fun getPopularSeries(reflesh:Boolean){
 
-        taskSeriesPopulares(true)
+    private fun getPopularSeries(){
+
+        taskSeriesPopulares()
 
     }
-    open fun taskSeriesPopulares(reflesh: Boolean){
+    open fun taskSeriesPopulares(){
 
         //Padrão Observador-> programação reativa
         Observable.fromCallable { SeriesServiceApi.getPopularSeries() }
@@ -45,12 +47,10 @@ open class MainViewPresenter(val viewCallBack:ViewCallBack) {
                     if(it.results.isEmpty()){
                         return@subscribeBy
                     }
-                    if(reflesh){
-                        viewCallBack.hideSwipeProgress(reflesh)
-                    }
                     viewCallBack.hideProgress()
+                    viewCallBack.onSwipeLoadItems()
+                    viewCallBack.onSwipeCompleteLoadItems()
                     viewCallBack.setPopularSeries(it.results)
-
                 },
                         onError = {
                             viewCallBack.hideProgress()

@@ -26,7 +26,6 @@ class SeriesPopularesAdpter(
         var pbProgresso: ProgressBar
         var card: CardView
         var tAvaliacao:TextView
-        var tSinopse:TextView
         init{
             //salva as views nas view holders
             tNome = view.findViewById<TextView>(R.id.tName)
@@ -34,7 +33,6 @@ class SeriesPopularesAdpter(
             pbProgresso = view.findViewById<ProgressBar>(R.id.pbProgress)
             card = view.findViewById<CardView>(R.id.card_view)
             tAvaliacao = view.findViewById<TextView>(R.id.tVoteAverage)
-            tSinopse = view.findViewById<TextView>(R.id.tOverView)
         }
 
     }
@@ -63,7 +61,7 @@ class SeriesPopularesAdpter(
         holder.tNome.text = serie.name
         holder.pbProgresso.visibility = View.VISIBLE
         // faz o download da imagem e mostra o progress bar
-        Picasso.with(context).load(serie.thumb).fit().into(holder.imgCaminhoImagem,
+        Picasso.with(context).load(serie.thumb + serie.poster_path).fit().into(holder.imgCaminhoImagem,
                 object : com.squareup.picasso.Callback{
                     override fun onSuccess() {
                         holder.pbProgresso.visibility = View.GONE
@@ -74,7 +72,6 @@ class SeriesPopularesAdpter(
                     }
                 })
         holder.tAvaliacao.text = serie.vote_average.toString()
-        holder.tSinopse.text = serie.overview
         //adiciona o evento de click na linha
         holder.itemView.setOnClickListener{onClick(serie)}
     }

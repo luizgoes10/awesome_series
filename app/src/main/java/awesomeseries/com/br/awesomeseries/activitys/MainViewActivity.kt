@@ -45,16 +45,25 @@ class MainViewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         nav_view.setNavigationItemSelectedListener(this)
         presenter.onViewCreated()
+
     }
 
+    //Atualiza a Recycleview
+    override fun onSwipeLoadItems() {
+        swipeRefresh.setOnRefreshListener{
+            presenter.taskSeriesPopulares()
+        }
+    }
+
+    override fun onSwipeCompleteLoadItems() {
+       swipeRefresh.isRefreshing = false
+    }
 
     override fun setUpRecycler() {
           rvSeriesPopulars.layoutManager = LinearLayoutManager(this)
           rvSeriesPopulars.itemAnimator = DefaultItemAnimator()
     }
-    override fun hideSwipeProgress(show: Boolean) {
-        swipeRefresh.isRefreshing = show
-    }
+
 
     override fun showProgress() {
         pbProgressBar.visibility = View.VISIBLE
